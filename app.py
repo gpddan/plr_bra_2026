@@ -40,21 +40,28 @@ def calcular_plr_bancarios(salario, rec_fev, ir_fev):
     
     base_ir = rec_fev + bruto_setembro
     
+    # Nova Tabela de IR da PLR (2026)
     if base_ir <= 8214.40:
         aliquota, deducao = 0.0, 0.0
     elif base_ir <= 9922.28:
-        aliquota, deducao = 0.075, 573.06
+        aliquota, deducao = 0.075, 616.08
     elif base_ir <= 13167.00:
-        aliquota, deducao = 0.15, 1317.23
+        aliquota, deducao = 0.15, 1360.25
     elif base_ir <= 16380.38:
-        aliquota, deducao = 0.225, 2304.76
+        aliquota, deducao = 0.225, 2347.78
     else:
-        aliquota, deducao = 0.275, 3123.78
+        aliquota, deducao = 0.275, 3166.80
         
     ir_total = (base_ir * aliquota) - deducao
     ir_setembro = max(0.0, ir_total - ir_fev)
     
     contrib_negocial = min(bruto_setembro * 0.015, 248.21)
+    liquido_setembro = bruto_setembro - ir_setembro - contrib_negocial
+    
+    return salario_corrigido, parcela_54, bruto_setembro, base_ir, ir_setembro, contrib_negocial, liquido_setembro
+
+
+  contrib_negocial = min(bruto_setembro * 0.015, 248.21)
     liquido_setembro = bruto_setembro - ir_setembro - contrib_negocial
     
     return salario_corrigido, parcela_54, bruto_setembro, base_ir, ir_setembro, contrib_negocial, liquido_setembro
