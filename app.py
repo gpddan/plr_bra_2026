@@ -60,12 +60,6 @@ def calcular_plr_bancarios(salario, rec_fev, ir_fev):
     
     return salario_corrigido, parcela_54, bruto_setembro, base_ir, ir_setembro, contrib_negocial, liquido_setembro
 
-
-  contrib_negocial = min(bruto_setembro * 0.015, 248.21)
-    liquido_setembro = bruto_setembro - ir_setembro - contrib_negocial
-    
-    return salario_corrigido, parcela_54, bruto_setembro, base_ir, ir_setembro, contrib_negocial, liquido_setembro
-
 # Cabeçalho
 st.title("💰 Calculadora de PLR (Setembro)")
 st.write("Preencha as informações abaixo para simular a estimativa da sua PLR líquida.")
